@@ -39,7 +39,7 @@ class CrawlerService
 
     private function getDataFromContent(Page $page, Crawler $content)
     {
-        //$this->pageHeadingsService->execute($page, $content);
+        $this->pageHeadingsService->execute($page, $content);
         $this->pageImagesService->execute($page, $content);
     }
 }

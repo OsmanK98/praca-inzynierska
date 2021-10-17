@@ -28,6 +28,31 @@ class PageImages
      */
     private $page;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numberOfSmallSizeGraphics;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numberOfMediumSizeGraphics;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numberOfBigSizeGraphics;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numberOfCustomGraphics;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numberOfSvgGraphics;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +78,66 @@ class PageImages
     public function setPage(Page $page): self
     {
         $this->page = $page;
+
+        return $this;
+    }
+
+    public function getNumberOfSmallSizeGraphics(): ?int
+    {
+        return $this->numberOfSmallSizeGraphics;
+    }
+
+    public function setNumberOfSmallSizeGraphics(?int $numberOfSmallSizeGraphics): self
+    {
+        $this->numberOfSmallSizeGraphics = $numberOfSmallSizeGraphics;
+
+        return $this;
+    }
+
+    public function getNumberOfMediumSizeGraphics(): ?int
+    {
+        return $this->numberOfMediumSizeGraphics;
+    }
+
+    public function setNumberOfMediumSizeGraphics(?int $numberOfMediumSizeGraphics): self
+    {
+        $this->numberOfMediumSizeGraphics = $numberOfMediumSizeGraphics;
+
+        return $this;
+    }
+
+    public function getNumberOfBigSizeGraphics(): ?int
+    {
+        return $this->numberOfBigSizeGraphics;
+    }
+
+    public function setNumberOfBigSizeGraphics(?int $numberOfBigSizeGraphics): self
+    {
+        $this->numberOfBigSizeGraphics = $numberOfBigSizeGraphics;
+
+        return $this;
+    }
+
+    public function getNumberOfCustomGraphics(): ?int
+    {
+        return $this->numberOfCustomGraphics;
+    }
+
+    public function setNumberOfCustomGraphics(?int $numberOfCustomGraphics): self
+    {
+        $this->numberOfCustomGraphics = $numberOfCustomGraphics;
+
+        return $this;
+    }
+
+    public function getNumberOfSvgGraphics(): ?int
+    {
+        return $this->numberOfSvgGraphics;
+    }
+
+    public function setNumberOfSvgGraphics(?int $numberOfSvgGraphics): self
+    {
+        $this->numberOfSvgGraphics = $numberOfSvgGraphics;
 
         return $this;
     }
