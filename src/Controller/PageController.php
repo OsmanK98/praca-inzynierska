@@ -16,7 +16,7 @@ class PageController extends AbstractController
     }
 
     #[Route('/get-content', name: 'get_content')]
-    public function index()
+    public function index(): Response
     {
         $this->crawlerService->execute();
         return new Response('success');

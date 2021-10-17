@@ -17,7 +17,7 @@ class PageHeadingsService
     private Crawler $content;
     private int $counter = 0;
 
-    private $headings = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+    private array $headings = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
 
     public function __construct(private PageHeadingsRepository $pageHeadingsRepository,
                                 private EntityManagerInterface $em)
@@ -35,7 +35,6 @@ class PageHeadingsService
         $this->getPageHeadingsData();
         $this->em->persist($this->pageHeadings);
         $this->em->flush();
-        dd('xd');
     }
 
     private function getPageHeadingsData()
@@ -65,10 +64,7 @@ class PageHeadingsService
                 $this->getTextFromNodes($childNode);
             }
         }
-        dump($this->counter);
-        dump(count($h));
-        dump($this->counter / count($h));
-//        dd('xd');
+
         if (count($h) > 0) {
             return $this->counter / count($h);
         } else {
@@ -76,13 +72,13 @@ class PageHeadingsService
         }
     }
 
-    private function getTextFromNodes($childNode)
+    private function getTextFromNodes($childNode): int
     {
         if ($childNode == null) {
             return 1;
         }
+
         if ($childNode->nodeName === '#text') {
-            dump($childNode->data);
             $this->counter += str_word_count($childNode->data);
             return 1;
         } else {

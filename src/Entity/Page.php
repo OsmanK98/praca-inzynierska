@@ -27,6 +27,11 @@ class Page
      */
     private $pageHeadings;
 
+    /**
+     * @ORM\OneToOne(targetEntity=PageImages::class, mappedBy="page", cascade={"persist", "remove"})
+     */
+    private $pageImages;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +65,23 @@ class Page
         }
 
         $this->pageHeadings = $pageHeadings;
+        return $this;
+    }
+
+    public function getPageImages(): ?PageImages
+    {
+        return $this->pageImages;
+    }
+
+    public function setPageImages(PageImages $pageImages): self
+    {
+        // set the owning side of the relation if necessary
+        if ($pageImages->getPage() !== $this) {
+            $pageImages->setPage($this);
+        }
+
+        $this->pageImages = $pageImages;
+
         return $this;
     }
 }
