@@ -8,6 +8,7 @@ use App\Entity\Page;
 use App\Repository\PageRepository;
 use App\Service\DataCrawler\PageHeadingsService;
 use App\Service\DataCrawler\PageImagesService;
+use App\Service\DataCrawler\PageMetaService;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -17,7 +18,8 @@ class CrawlerService
         private HttpClientInterface $client,
         private PageRepository $pageRepository,
         private PageHeadingsService $pageHeadingsService,
-        private PageImagesService $pageImagesService
+        private PageImagesService $pageImagesService,
+        private PageMetaService $pageMetaService
     )
     {
     }
@@ -41,5 +43,6 @@ class CrawlerService
     {
         $this->pageHeadingsService->execute($page, $content);
         $this->pageImagesService->execute($page, $content);
+        $this->pageMetaService->execute($page, $content);
     }
 }
